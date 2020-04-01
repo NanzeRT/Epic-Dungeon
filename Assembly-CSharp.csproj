@@ -51,8 +51,10 @@
     <Compile Include="Assets\Scripts\LevelSystem\Level.cs" />
     <Compile Include="Assets\Scripts\LevelSystem\LevelPack.cs" />
     <Compile Include="Assets\Scripts\LevelSystem\Map.cs" />
+    <Compile Include="Assets\Scripts\LevelSystem\Maps\TestMap.cs" />
     <Compile Include="Assets\Scripts\LevelSystem\TilePack.cs" />
     <Compile Include="Assets\Scripts\LevelSystem\TilePacks\DefaltTilePack.cs" />
+    <Compile Include="Assets\Scripts\LevelSystem\Levels\TestLevel.cs" />
     <Compile Include="Assets\Scripts\Player\PMove.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Staff\CamMove.cs" />
@@ -61,6 +63,9 @@
     <Compile Include="Assets\Scripts\Tiles\TileDef.cs" />
     <Compile Include="Assets\Scripts\Tiles\Tile.cs" />
     <Compile Include="Assets\Scripts\Tiles\TileTypes\CommonTile.cs" />
+    <Compile Include="Assets\Scripts\Tiles\TileTypes\EndTile.cs" />
+    <Compile Include="Assets\Scripts\Tiles\TileTypes\EntityTile.cs" />
+    <Compile Include="Assets\Scripts\Tiles\TileTypes\StartTile.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponController.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponCore.cs" />
     <Reference Include="UnityEngine.UI">
@@ -87,7 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Scripts\LevelSystem\LevelPacks\" />
-    <Folder Include="Assets\Scripts\LevelSystem\Maps\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

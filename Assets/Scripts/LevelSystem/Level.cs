@@ -7,11 +7,25 @@ using Maps;
 
 namespace Levels
 {
+    interface ILevel
+    {
+        byte[,] Generate();
+        IMap Map { get; }
+    }
+
     abstract class Level
     {
-        byte difficulty;
+        protected byte difficulty;
+
+        protected readonly IMap map;
+        public IMap Map => map;
 
 
-        Level(byte dif) { }
+        protected Level(IMap m, byte dif) { map = m; difficulty = dif; }
+
+        public virtual byte[,] Generate()
+        {
+            return map.Generate();
+        }
     }
 }

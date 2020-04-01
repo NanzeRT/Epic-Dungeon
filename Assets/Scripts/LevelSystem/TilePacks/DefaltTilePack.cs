@@ -9,13 +9,24 @@ namespace TilePacks
 {
     class DefaltTilePack : ITilePack
     {
-        public string packName = "Defalt";
+        public string packName => "Defalt";
 
-        ITile DefineType(byte index)
+        public ITile GetTile(byte index)
         {
-            return new CommonTile();
+            // 0 - air (tiles don't spawn)
+            if (index < 128)
+            {
+                return new CommonTile(index);
+            }
+            if (index < 254)
+            {
+                return new EntityTile(index);
+            }
+            if (index == 254)
+            {
+                return new StartTile();
+            }
+            return new EndTile();
         }
-
-
     }
 }

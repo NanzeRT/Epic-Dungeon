@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Tiles
 {
-    class CommonTile : Tile, ITile
+    class EntityTile : Tile, ITile
     {
-        public CommonTile(byte i) : base(i) { }
+        public EntityTile(byte i) : base(i) { }
     }
 }
