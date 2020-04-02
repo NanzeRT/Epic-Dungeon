@@ -11,6 +11,8 @@ namespace LevelPacks
     internal interface ILevelPack
     {
         ILevel CurrentLevel { get; }
+        void NextLevel();
+        void NextLevel(int n);
     }
 
     internal abstract class LevelPack
@@ -32,8 +34,10 @@ namespace LevelPacks
         public void NextLevel() { NextLevel(1); }
         public void NextLevel(int n)
         {
+            if (NoLevel == levels.Length - 1) currentLevel = null;
             NoLevel += n;
-            currentLevel = levels[n];
+            if (NoLevel > levels.Length - 1) NoLevel = levels.Length - 1;
+            currentLevel = levels[NoLevel];
         }
     }
 }
