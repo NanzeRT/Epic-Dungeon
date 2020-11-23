@@ -6,7 +6,14 @@ using UnityEngine;
 public class Builder : MonoBehaviour
 {
 
-    public byte[,] tiles = { };
+    public byte[,] tiles = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+    						{1,0,0,1,1,0,0,0,0,0,1,1,1,1,1},
+    						{1,1,0,1,0,1,1,0,0,0,0,0,0,0,1},
+    						{1,0,0,0,0,0,0,0,1,1,0,0,0,0,1},
+    						{1,1,0,1,0,0,0,0,0,1,0,1,0,0,1},
+    						{1,1,0,1,0,0,0,1,0,1,0,1,0,0,1},
+    						{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+    						};
     TileDef[,] tilesScr;
 
     public GameObject tilePref;

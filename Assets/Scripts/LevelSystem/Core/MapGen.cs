@@ -5,15 +5,15 @@ using System.Text;
 
 using TilePacks;
 
-namespace Maps
+namespace MapGens
 {
-    interface IMap
+    interface IMapGen
     {
         byte[,] Generate();
         ITilePack Pack { get; }
     }
 
-    abstract class Map : IMap
+    abstract class MapGen : IMapGen
     {
         protected ITilePack pack = new DefaltTilePack();
         public ITilePack Pack => pack;

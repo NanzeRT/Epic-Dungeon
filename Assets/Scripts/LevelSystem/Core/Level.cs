@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Maps;
+using MapGens;
 
 namespace Levels
 {
     interface ILevel
     {
         byte[,] Generate();
-        IMap Map { get; }
+        IMapGen Gen { get; }
     }
 
     abstract class Level
     {
         protected byte difficulty;
 
-        protected readonly IMap map;
-        public IMap Map => map;
+        protected readonly IMapGen map;
+        public IMapGen Gen => map;
 
 
-        protected Level(IMap m, byte dif) { map = m; difficulty = dif; }
+        protected Level(IMapGen m, byte dif) { map = m; difficulty = dif; }
 
         public virtual byte[,] Generate()
         {

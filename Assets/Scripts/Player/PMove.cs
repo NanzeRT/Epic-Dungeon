@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PMove : MonoBehaviour {
+public class PMove : MonoBehaviour
+{
 
 	Transform tr;
 	Animator anim;

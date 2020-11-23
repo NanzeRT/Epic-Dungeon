@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Maps
+namespace MapGens
 {
-    class TestMap : Map, IMap
+    class TestMap : MapGen, IMapGen
     {
         protected override int SizeX => 5;
         protected override int SizeY => 5;

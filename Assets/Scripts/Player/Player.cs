@@ -15,7 +15,7 @@ namespace Player
 		// Equipment
 		private IWeapon weapon;
 
-		void Start()
+		void Awake()
 		{
 			player = this;
 
