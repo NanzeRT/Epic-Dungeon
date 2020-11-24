@@ -2,18 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using MapGens;
 
 public class Builder : MonoBehaviour
 {
 
-    public byte[,] tiles = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-    						{1,0,0,1,1,0,0,0,0,0,1,1,1,1,1},
-    						{1,1,0,1,0,1,1,0,0,0,0,0,0,0,1},
-    						{1,0,0,0,0,0,0,0,1,1,0,0,0,0,1},
-    						{1,1,0,1,0,0,0,0,0,1,0,1,0,0,1},
-    						{1,1,0,1,0,0,0,1,0,1,0,1,0,0,1},
-    						{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-    						};
+    public byte[,] tiles = new MapGens.TestMap().Generate();
     TileDef[,] tilesScr;
 
     public GameObject tilePref;
