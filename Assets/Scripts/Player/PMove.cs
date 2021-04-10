@@ -15,6 +15,7 @@ public class PMove : MonoBehaviour
 
 	public float speed = 4;
 	public float jumpForse = 8.3f;
+	public float koitDistanse = .3f;
 
 	bool isRight = true;
 	float moveX;
@@ -42,7 +43,7 @@ public class PMove : MonoBehaviour
 
 		if (Input.GetAxis("Jump") != 0)
 		{
-			if (!isJumping && rb.position == landPos || Input.GetAxis("Fly") != 0)
+			if (!isJumping && (rb.position - landPos).magnitude < koitDistanse || Input.GetAxis("Fly") != 0)
 			{
 				Jump();
 				isJumping = true;
