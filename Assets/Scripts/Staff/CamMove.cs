@@ -20,7 +20,7 @@ public class CamMove : MonoBehaviour {
 	}
 
 	void Update () {
-		mousePos = Pointer.Pointer.pos * S;
+		mousePos = Pointer.Pointer.lookpos * S;
 		pos.Set(Mathf.Lerp(tr.position.x, (PTr.position.x + mousePos.x) / (1f + S), Time.deltaTime * 7f),
 		Mathf.Lerp(tr.position.y, (PTr.position.y + mousePos.y) / (1f + S), Time.deltaTime * 7f),
 		tr.position.z);

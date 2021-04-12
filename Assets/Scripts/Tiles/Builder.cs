@@ -31,7 +31,7 @@ public class Builder : MonoBehaviour
             {
                 if (tiles[y, x] != 0)
                 {
-                    tilesScr[y, x] = Instantiate(tilePref, new Vector3(x, -y, 0f), new Quaternion()).GetComponent<TileDef>();
+                    tilesScr[y, x] = Instantiate(tilePref, new Vector3(x, -y, 0f), new Quaternion(), this.transform).GetComponent<TileDef>();
                     tilesScr[y, x].type = tiles[y, x];
                     tilesScr[y, x].x = x;
                     tilesScr[y, x].y = y;
@@ -39,6 +39,8 @@ public class Builder : MonoBehaviour
                 }
             }
         }
+        CompositeCollider2D composit = this.GetComponent<CompositeCollider2D>();
+        composit.GenerateGeometry();
     }
 
     void Update()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PMove : MonoBehaviour
 {
@@ -15,12 +16,14 @@ public class PMove : MonoBehaviour
 
 	public float speed = 4;
 	public float jumpForse = 8.3f;
-	public float koitDistanse = .3f;
+	public float koitTime = .2f;
 
 	bool isRight = true;
 	float moveX;
-	bool isJumping;
+	bool isJumping = true;
+	bool landed = false;
 	Vector2 landPos;
+	float landTime;
 
 	void Start()
 	{
@@ -32,7 +35,7 @@ public class PMove : MonoBehaviour
 	
 	void Update ()
 	{
-		if ((moveX = Input.GetAxis("Horizontal")) != 0)
+		if ((moveX = CrossPlatformInputManager.GetAxis("Horizontal")) != 0)
 		{
 			Walk(moveX);
 		}
@@ -41,9 +44,9 @@ public class PMove : MonoBehaviour
 			NotWalk();
 		}
 
-		if (Input.GetAxis("Jump") != 0)
+		if (CrossPlatformInputManager.GetButton("Jump"))
 		{
-			if (!isJumping && (rb.position - landPos).magnitude < koitDistanse || Input.GetAxis("Fly") != 0)
+			if (!isJumping && (rb.position == landPos || landed && Time.time - landTime < koitTime) || CrossPlatformInputManager.GetButton("Fly"))
 			{
 				Jump();
 				isJumping = true;
@@ -57,24 +60,27 @@ public class PMove : MonoBehaviour
 
 	public void Jump()
 	{
+		rb.sharedMaterial = WMat;
 		rb.velocity = new Vector2(rb.velocity.x, jumpForse);
+		landed = false;
 	}
 
 	public void Walk(float moveX)
 	{
 		rb.sharedMaterial = WMat;
 		rb.velocity = new Vector2(
-			Mathf.Lerp(rb.velocity.x, moveX * speed, Time.deltaTime * 25f),
+			Mathf.Lerp(rb.velocity.x, moveX * speed, Time.deltaTime * (landed? 5f : 1f)),
 			rb.velocity.y);
-			anim.SetBool("IsWalking", true);
+		anim.SetBool("IsWalking", true);
 		if ((moveX > 0) != isRight) Flip();
 	}
 
 	public void NotWalk()
 	{
-		rb.sharedMaterial = IMat;
+		if (landed)
+			rb.sharedMaterial = IMat;
 		anim.SetBool("IsWalking", false);
-		if (rb.velocity.x < 1f)
+		if (Mathf.Abs(rb.velocity.x) < 1f)
 		{
 			rb.velocity = new Vector2(0f, rb.velocity.y);
 		}
@@ -90,5 +96,7 @@ public class PMove : MonoBehaviour
 	public void OnTriggerStay2D(Collider2D collider)
 	{
 		landPos = rb.position;
+		landTime = Time.time;
+		landed = true;
 	}
 }
